@@ -1,29 +1,38 @@
-const photoUpload = document.getElementById('photoUpload');
-const imagePreview = document.getElementById('imagePreview');
+// This file can be used for future JavaScript interactions.
 
-photoUpload.addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            imagePreview.src = e.target.result;
-            imagePreview.style.display = 'block'; // Show preview
-        }
-        reader.readAsDataURL(file);
-    } else {
-        imagePreview.src = '#';
-        imagePreview.style.display = 'none'; // Hide preview
-    }
-});
+const claimButton = document.getElementById('claimButton');
+const claimStatusMessage = document.getElementById('claimStatusMessage');
 
-// Basic form submission handling (can be expanded)
-document.getElementById('photoForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent actual submission for this example
-    const photoFile = photoUpload.files[0];
-    if (photoFile) {
-        alert(`Photo "${photoFile.name}" ready for submission! (This is a demo)`);
-        // In a real application, you would send the file to a server here.
-    } else {
-        alert('Please select a photo to upload.');
+if (claimButton && claimStatusMessage) {
+    claimButton.addEventListener('click', function() {
+        // Change button text and disable it
+        claimButton.textContent = 'Processing...';
+        claimButton.disabled = true;
+
+        // Display processing message
+        claimStatusMessage.textContent = 'Please wait while we process your claim...';
+        claimStatusMessage.style.color = '#3498db'; // Blue color for processing message
+        claimStatusMessage.style.display = 'block'; // Ensure it's visible
+
+        // Simulate a delay (e.g., 2.5 seconds)
+        setTimeout(function() {
+            // Option 1: Hide the button
+            // claimButton.style.display = 'none';
+
+            // Option 2: Change button text to "Claim Submitted!" (and keep it disabled)
+            claimButton.textContent = 'Claim Submitted!';
+            // claimButton.disabled will remain true
+
+            // Display success message
+            claimStatusMessage.innerHTML = '<strong>Congratulations!</strong> Your claim for $750 is being processed. <br>You will be contacted shortly via email.';
+            claimStatusMessage.style.color = '#2ecc71'; // Green color for success message
+        }, 2500); // 2.5 seconds delay
+    });
+} else {
+    if (!claimButton) {
+        console.error('Error: Claim button not found.');
     }
-});
+    if (!claimStatusMessage) {
+        console.error('Error: Claim status message container not found.');
+    }
+}

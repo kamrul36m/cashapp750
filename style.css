@@ -1,62 +1,126 @@
 body {
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-    background-color: #f4f4f4; /* Added a light background for better contrast */
+    font-family: Arial, Helvetica, sans-serif; /* Specific sans-serif stack */
+    margin: 0; /* Remove default margin */
+    padding-top: 40px; /* Space at the top */
+    padding-bottom: 40px; /* Space at the bottom */
+    background-color: #f0f2f5; /* Slightly different light background for body */
+    color: #333; /* Default text color */
+    line-height: 1.6; /* Improved readability */
+}
+
+.container {
+    max-width: 700px; /* Max width for the main content area */
+    margin: 0 auto; /* Center the container */
+    padding: 30px; /* Padding inside the container */
+    background-color: #ffffff; /* White background for the content container */
+    border-radius: 8px; /* Rounded corners for the container */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Softer shadow for the container */
+    text-align: center; /* Center text and inline-block elements within the container */
 }
 
 header h1 {
-    color: #2ecc71; /* Green color for the header */
-    margin-bottom: 20px; /* Bottom margin for the header */
+    color: #28a745; /* Refined green color, similar to Bootstrap's success */
+    margin-bottom: 25px; /* Adjusted margin */
+    font-size: 2.2em; /* Slightly larger heading */
 }
 
-section, form {
-    margin-top: 20px; /* Added top margin for sections and form */
+section p { /* Target p within section for more specific styling */
+    margin-top: 0; /* Remove top margin if header is sufficient */
+    margin-bottom: 30px; /* Space below the paragraph */
+    font-size: 1.1em; /* Slightly larger paragraph text */
+    color: #555; /* Softer text color */
 }
 
+/* Styles for a potential future form - kept for completeness */
 form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    border: 1px solid #ccc;
-    padding: 30px; /* Increased padding */
-    border-radius: 8px; /* Slightly more rounded corners */
-    background-color: #ffffff; /* White background for the form */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Added a subtle shadow */
+    align-items: center; /* This would make items inside form align center if it were flex */
+    /* text-align: left; would be needed if form items should not be centered by .container's text-align */
+    margin-top: 20px;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 label {
     margin-bottom: 10px;
-    font-weight: bold; /* Made label text bold */
+    font-weight: bold;
+    color: #444;
 }
 
-input[type="file"] {
-    margin-bottom: 20px; /* Increased margin */
+/* Generic button style (can be overridden by ID specific styles) */
+button {
+    font-family: Arial, Helvetica, sans-serif; /* Ensure font consistency */
+    border-radius: 5px;
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
 }
 
-#imagePreview {
-    max-width: 300px;
-    max-height: 300px;
-    margin-top: 10px;
-    margin-bottom: 20px; /* Added margin below preview */
-    display: none; /* Hidden by default */
-    border: 1px dashed #ccc; /* Added a border to the preview area */
-    padding: 5px; /* Padding inside the preview border */
+button:hover {
+    transform: translateY(-1px); /* Slight lift on hover */
 }
 
+/* Specific styling for the old submit button type (if reused) */
 button[type="submit"] {
-    background-color: #3498db; /* Blue background color */
-    color: white; /* White text color */
-    padding: 12px 25px; /* Padding */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 16px; /* Larger font size */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    background-color: #007bff; /* Bootstrap primary blue */
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,123,255,0.2);
 }
 
 button[type="submit"]:hover {
-    background-color: #2980b9; /* Darker blue on hover */
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 2px 6px rgba(0,123,255,0.3);
+}
+
+#claimSection {
+    margin-top: 20px; /* Adjusted margin */
+    margin-bottom: 20px; /* Added margin below */
+    /* text-align: center; is inherited from .container */
+}
+
+#claimButton {
+    background-color: #28a745; /* Green, matches header */
+    color: white;
+    padding: 15px 35px; /* Slightly more padding */
+    font-size: 1.15em; /* Larger font size for primary action */
+    text-transform: uppercase;
+    letter-spacing: 0.5px; /* Added letter spacing */
+    box-shadow: 0 2px 5px rgba(40,167,69,0.25);
+}
+
+#claimButton:hover {
+    background-color: #218838; /* Darker green on hover */
+    box-shadow: 0 3px 7px rgba(40,167,69,0.3);
+}
+
+#claimButton:disabled {
+    background-color: #adb5bd; /* Bootstrap secondary/grey color for disabled */
+    color: #6c757d; /* Darker grey text */
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none; /* No lift effect when disabled */
+}
+
+#claimStatusMessage {
+    margin-top: 30px; /* Increased margin for more separation */
+    padding: 18px; /* Increased padding */
+    border-radius: 6px; /* Consistent border-radius */
+    font-size: 1.05em; /* Slightly adjusted font size */
+    /* text-align: center; is inherited */
+    width: 95%; /* Adjusted width for better fit within container padding */
+    max-width: 600px; /* Max width */
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7; /* Increased line height for readability */
+    display: none; /* Initially hidden */
+    background-color: #e9ecef; /* Bootstrap light grey background */
+    border: 1px solid #ced4da; /* Bootstrap default border color */
+    color: #495057; /* Default text color for status message, JS will override for success/processing */
 }
